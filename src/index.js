@@ -116,6 +116,11 @@ function Comments({commentNum}) {
         </div>
     )
 }
+
+Comments.proptypes = {
+    commentNum:PropTypes.number.isRequired
+};
+
 const testPosts = {
     id:1,
     title: "Why cats are better than dogs and other interseting details about humans",
