@@ -4,22 +4,26 @@ import './index.css';
 import PropTypes from 'prop-types';
 import moment from 'moment'; 
 
-function Posts({post}) {
+function Posts({posts}) {
     return(
-        <div className='post'>
-            <div className="first-line">
-                <PostNum postNumber={post.id} />
-                <PostTitle title={post.title} />
-                <PostSource source={post.source} />
-            </div>
-            <div className="second-line">
-                <PostPoints points={post.points} />
-                <UserName username={post.userName} />
-                <Time time={post.time} />
-                <FlagLink />
-                <HideLink />
-                <Comments commentNum={post.comments} />
-            </div>
+        <div className="posts">
+            {posts.map(post => (
+                <div className='post' key={post.id}>
+                    <div className="first-line">
+                        <PostNum postNumber={post.id} />
+                        <PostTitle title={post.title} />
+                        <PostSource source={post.source} />
+                    </div>
+                    <div className="second-line">
+                        <PostPoints points={post.points} />
+                        <UserName username={post.userName} />
+                        <Time time={post.time} />
+                        <FlagLink />
+                        <HideLink />
+                        <Comments commentNum={post.comments} />
+                    </div>
+                </div>
+            ))}
         </div>
     )
 };
@@ -121,16 +125,54 @@ Comments.proptypes = {
     commentNum:PropTypes.number.isRequired
 };
 
-const testPosts = {
-    id:1,
-    title: "Why cats are better than dogs and other interseting details about humans",
-    source:"www.sendhelp.com",
-    points: 124,
-    userName:'oleeesssia',
-    time: "Mon Nov 26 2018 19:38:05 GMT-0300",
-    comments: 43
-}
+const testPosts = [
+    {
+        id:1,
+        title: "Why cats are better than dogs and other interseting details about humans",
+        source:"www.sendhelp.com",
+        points: 124,
+        userName:'oleeesssia',
+        time: "Mon Nov 26 2018 19:38:05 GMT-0300",
+        comments: 43
+    },
+    {
+        id:2,
+        title: "hi-liter of choise for next winner of pagentshow is YELLOW",
+        source:"www.siono.com",
+        points: 12,
+        userName:'lokiloki',
+        time: "Mon Nov 23 2018 19:38:05 GMT-0300",
+        comments: 65
+    },
+    {
+        id:3,
+        title: "the reason DJ Paul went to class is finally revealed",
+        source:"www.xanc.com",
+        points: 1233,
+        userName:'kiwiLoverXoXo',
+        time: "Mon Sep 13 2018 19:38:05 GMT-0300",
+        comments: 100
+    },
+    {
+        id:4,
+        title: "Are YOU prepared for the robot apocolypse? ",
+        source:"www.abracadabra.com",
+        points: 0,
+        userName:'oleeesssia',
+        time: "Mon Oct 06 2016 19:38:05 GMT-0300",
+        comments: 543
+    },
+    {
+        id:2,
+        title: "where to find cute boys and ugly sweaters",
+        source:"www.whatate.com",
+        points: 102,
+        userName:'oleeesssia',
+        time: "Mon Nov 11 2018 19:38:05 GMT-0300",
+        comments: 65
+    }
+]
 
-ReactDOM.render(<Posts post={testPosts}/>, document.querySelector('#root'));
+ReactDOM.render(<Posts posts={testPosts}/>, document.querySelector('#root'));
 
 
